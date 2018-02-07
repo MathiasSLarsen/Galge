@@ -1,0 +1,10 @@
+Spørgsmål 1: Hvor lang tid tager et kald over SOAP i forhold til RMI? Hvorfor?
+RMI kører en del hurtigere end SOAP, cirka 10 gange hurtigere.
+RMI sender data i binært format (Java bytecode), mens SOAP sender XML filer over netværket.
+
+Spørgsmål 2: Hvor meget data skal overføres for et kald over SOAP i forhold til RMI? Hvorfor?
+I SOAP sendes en SOAP envelope, som er en xml fil med en header, en body og en fault.
+For RMI overføres binær data om metoden, objekt-reference og parametre.
+
+Spørgsmål 3: Hvordan sendes Bruger-objektet til klienten? 
+Bruger-objektet sendes over SOAP. WSDL'en sendes og der sendes en SOAP envelope.
