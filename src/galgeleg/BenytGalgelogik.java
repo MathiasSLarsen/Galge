@@ -10,7 +10,7 @@ public class BenytGalgelogik {
 
     public static void main(String[] args) throws Exception {
 
-        GalgeI k = (GalgeI) Naming.lookup("rmi://localhost:1099/Galge");
+        GalgeI k = (GalgeI) Naming.lookup("rmi://ubuntu4.saluton.dk/Galge");
 
         URL url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
         QName serviceQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
@@ -30,7 +30,7 @@ public class BenytGalgelogik {
         System.out.println("//                                                  \\\\");
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
 
-        brugerNavn = scanner.nextLine();
+        brugerNavn = "s165232"; //scanner.nextLine();
 
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
         System.out.println("//                                                  \\\\");
@@ -40,9 +40,9 @@ public class BenytGalgelogik {
         System.out.println("//                                                  \\\\");
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
 
-        password = scanner.nextLine();
+        password = "ismand";//scanner.nextLine();
 
-        if (auth.hentBruger(brugerNavn, password) != null) {
+        //if (auth.hentBruger(brugerNavn, password) != null) {
             k.nulstil();
 
             try {
@@ -74,9 +74,9 @@ public class BenytGalgelogik {
                 System.out.println("BUUU du har tabt!!!");
             }
             k.nulstil();
-        }else{
+        //}else{
             System.out.println("Brugeren findes ikke!!!!");
-        }
+        //}
 
     }
 
