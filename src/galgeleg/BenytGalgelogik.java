@@ -13,9 +13,10 @@ public class BenytGalgelogik {
         GalgeI k = (GalgeI) Naming.lookup("rmi://localhost:1099/Galge");
 
         URL url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
-        QName qname = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
-        Service service = Service.create(url, qname);
-        Brugeradmin auth = service.getPort(Brugeradmin.class);
+        QName serviceQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
+        QName portQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplPort");
+        Service service = Service.create(url, serviceQName);
+        Brugeradmin auth = service.getPort(portQName, Brugeradmin.class);
 
         Scanner scanner = new Scanner(System.in);
         String brugerNavn;
