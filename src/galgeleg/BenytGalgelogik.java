@@ -30,7 +30,7 @@ public class BenytGalgelogik {
         System.out.println("//                                                  \\\\");
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
 
-        brugerNavn = "s165232"; //scanner.nextLine();
+        brugerNavn = scanner.nextLine();
 
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
         System.out.println("//                                                  \\\\");
@@ -40,9 +40,10 @@ public class BenytGalgelogik {
         System.out.println("//                                                  \\\\");
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
 
-        password = "ismand";//scanner.nextLine();
+        password = scanner.nextLine();
 
-        //if (auth.hentBruger(brugerNavn, password) != null) {
+        /*TODO: Fix error "Cannot find dispatch method"*/
+        if (auth.hentBruger(brugerNavn, password) != null) {
             k.nulstil();
 
             try {
@@ -74,9 +75,9 @@ public class BenytGalgelogik {
                 System.out.println("BUUU du har tabt!!!");
             }
             k.nulstil();
-        //}else{
+        }else{
             System.out.println("Brugeren findes ikke!!!!");
-        //}
+        }
 
     }
 
