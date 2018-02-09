@@ -5,7 +5,7 @@ import javax.xml.ws.Service;
 import java.net.URL;
 import java.util.Scanner;
 
-public class BenytGalgelogik {
+public class BenytGalgelegModServer {
 
     public static void main(String[] args) throws Exception {
 
