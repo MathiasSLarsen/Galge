@@ -46,8 +46,6 @@ public class BenytGalgelegModServer {
 
         password = scanner.nextLine();
 
-
-        /*TODO: Fix error "Cannot find dispatch method"*/
         if (auth.hentBruger(brugerNavn, password) != null) {
             k.nulstil();
 
