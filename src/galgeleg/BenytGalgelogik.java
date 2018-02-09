@@ -24,23 +24,23 @@ public class BenytGalgelogik {
 
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
         System.out.println("//                                                  \\\\");
-        System.out.println("//    Velkommen til det fantastiske galgelej spil   \\\\");
+        System.out.println("//    Velkommen til det fantastiske galgeleg spil   \\\\");
         System.out.println("//                                                  \\\\");
-        System.out.println("//              Intast bruger navn                  \\\\");
+        System.out.println("//              Indtast brugernavn                  \\\\");
         System.out.println("//                                                  \\\\");
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
 
         brugerNavn = scanner.nextLine();
 
+
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
         System.out.println("//                                                  \\\\");
-        System.out.println("//    Velkommen til det fantastiske galgelej spil   \\\\");
-        System.out.println("//                                                  \\\\");
-        System.out.println("//              Intast password                     \\\\");
+        System.out.println("//              Indtast password                    \\\\");
         System.out.println("//                                                  \\\\");
         System.out.println("//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\**//**\\\\");
 
         password = scanner.nextLine();
+
 
         /*TODO: Fix error "Cannot find dispatch method"*/
         if (auth.hentBruger(brugerNavn, password) != null) {
@@ -53,7 +53,7 @@ public class BenytGalgelogik {
             }
             k.logStatus();
 
-            System.out.println("Get ordet!!!");
+            System.out.println("Gæt ordet!!!");
 
             while (!k.erSpilletSlut()) {
                 System.out.println("Du har gættet forkert " + k.getAntalForkerteBogstaver() + " gange.");
