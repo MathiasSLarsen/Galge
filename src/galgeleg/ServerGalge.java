@@ -5,8 +5,7 @@
  */
 package galgeleg;
 
-import java.rmi.Naming;
-import java.rmi.Remote;
+import javax.xml.ws.Endpoint;
 
 /**
  *
@@ -15,11 +14,15 @@ import java.rmi.Remote;
 public class ServerGalge {
     public static void main(String[] arg) throws Exception
 	{
-		// Enten: Kør programmet 'rmiregistry' fra mappen med .class-filerne, eller:
-		java.rmi.registry.LocateRegistry.createRegistry(1099); // start i server-JVM
-
 		GalgeI k = (GalgeI) new Galgelogik();
-		Naming.rebind("rmi://localhost/Galge", k);
-		System.out.println("Kontotjeneste registreret.");
+
+		/* RMI */
+		//Enten: Kør programmet 'rmiregistry' fra mappen med .class-filerne, eller:
+		//java.rmi.registry.LocateRegistry.createRegistry(1099); // start i server-JVM
+		//Naming.rebind("rmi://localhost/Galge", k);
+
+		/* SOAP */
+		Endpoint.publish("http://[::]:9932/galgeleg",k);
+		System.out.println("Galgelogik publiceret over SOAP.");
 	}
 }

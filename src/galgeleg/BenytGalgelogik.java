@@ -3,19 +3,22 @@ package galgeleg;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.URL;
-import java.rmi.Naming;
 import java.util.Scanner;
 
 public class BenytGalgelogik {
 
     public static void main(String[] args) throws Exception {
 
-        GalgeI k = (GalgeI) Naming.lookup("rmi://ubuntu4.saluton.dk/Galge");
-
-        URL url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
-        QName serviceQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
-        QName portQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplPort");
+        URL url = new URL("http://ubuntu4.saluton.dk:9932/galgeleg?wsdl");
+        QName serviceQName = new QName("http://galgeleg/", "GalgelogikService");
+        QName portQName = new QName("http://galgeleg/", "GalgelogikPort");
         Service service = Service.create(url, serviceQName);
+        GalgeI k = service.getPort(portQName, GalgeI.class);
+
+        url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
+        serviceQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
+        portQName = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplPort");
+        service = Service.create(url, serviceQName);
         Brugeradmin auth = service.getPort(portQName, Brugeradmin.class);
 
         Scanner scanner = new Scanner(System.in);

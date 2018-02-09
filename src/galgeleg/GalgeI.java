@@ -5,6 +5,7 @@
  */
 package galgeleg;
 
+import javax.jws.WebService;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
  *
  * @author Matt_Lab
  */
+@WebService
 public interface GalgeI extends java.rmi.Remote{
 
 boolean erSidsteBogstavKorrekt()            throws java.rmi.RemoteException;

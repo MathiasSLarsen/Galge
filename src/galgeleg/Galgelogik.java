@@ -1,5 +1,6 @@
 package galgeleg;
 
+import javax.jws.WebService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
+@WebService(endpointInterface = "galgeleg.Galgelogik")
 public class Galgelogik extends UnicastRemoteObject implements GalgeI{
   /** AHT afprøvning er muligeOrd synlig på pakkeniveau */
   ArrayList<String> muligeOrd = new ArrayList<String>();
