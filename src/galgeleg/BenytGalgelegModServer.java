@@ -1,5 +1,7 @@
 package galgeleg;
 
+import brugerautorisation.transport.soap.Brugeradmin;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.URL;

@@ -1,4 +1,6 @@
-package galgeleg;
+package brugerautorisation.transport.soap;
+
+        import brugerautorisation.data.Bruger;
 
         import javax.jws.WebMethod;
         import javax.jws.WebService;
@@ -9,7 +11,8 @@ public interface Brugeradmin
      * Henter alle en brugers data
      * @return et Bruger-objekt med alle data
      */
-    @WebMethod Bruger hentBruger(String brugernavn, String adgangskode);
+    @WebMethod
+    Bruger hentBruger(String brugernavn, String adgangskode);
 
     /**
      * Ændrer en brugers adgangskode
