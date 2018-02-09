@@ -1,6 +1,6 @@
-package galgeleg;
-
 import brugerautorisation.transport.soap.Brugeradmin;
+import com.sun.xml.internal.ws.fault.ServerSOAPFaultException;
+import galgeleg.GalgeI;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -46,41 +46,44 @@ public class BenytGalgelegModServer {
 
         password = scanner.nextLine();
 
-        if (auth.hentBruger(brugerNavn, password) != null) {
-            k.nulstil();
+        try {
+            auth.hentBruger(brugerNavn, password);
+        } catch (ServerSOAPFaultException e){
+            System.out.println("Forkert brugernavn eller adgangskode!");
+            return;
+        }
 
-            try {
-                k.hentOrdFraDr();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        k.nulstil();
+
+        try {
+            k.hentOrdFraDr();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        k.logStatus();
+
+        System.out.println("Gæt ordet!!!");
+
+        while (!k.erSpilletSlut()) {
+            System.out.println("Du har gættet forkert " + k.getAntalForkerteBogstaver() + " gange.");
+            System.out.println("Hvis du gætter forkert 7 gange har du tabt :)");
+            System.out.println("");
+            System.out.println("Gæt på et bogstav!!!");
+            System.out.println(k.getSynligtOrd());
+            System.out.println("");
+            System.out.println("Du har gættet på fælgende bogstaver " + k.getBrugteBogstaver());
+
+            k.gætBogstav(scanner.nextLine().toLowerCase());
             k.logStatus();
 
-            System.out.println("Gæt ordet!!!");
-
-            while (!k.erSpilletSlut()) {
-                System.out.println("Du har gættet forkert " + k.getAntalForkerteBogstaver() + " gange.");
-                System.out.println("Hvis du gætter forkert 7 gange har du tabt :)");
-                System.out.println("");
-                System.out.println("Gæt på et bogstav!!!");
-                System.out.println(k.getSynligtOrd());
-                System.out.println("");
-                System.out.println("Du har gættet på fælgende bogstaver " + k.getBrugteBogstaver());
-
-                k.gætBogstav(scanner.nextLine().toLowerCase());
-                k.logStatus();
-
-            }
-
-            if (k.erSpilletVundet()) {
-                System.out.println("Tillykke du har vundet!!!");
-            } else if (k.erSpilletTabt()) {
-                System.out.println("BUUU du har tabt!!!");
-            }
-            k.nulstil();
-        }else{
-            System.out.println("Brugeren findes ikke!!!!");
         }
+
+        if (k.erSpilletVundet()) {
+            System.out.println("Tillykke du har vundet!!!");
+        } else if (k.erSpilletTabt()) {
+            System.out.println("BUUU du har tabt!!!");
+        }
+        k.nulstil();
 
     }
 
